@@ -1,25 +1,20 @@
-import { useState } from "react"
+import { useContext } from "react";
+import {ToggleTheme} from '../App'
 
-export default function UseState(){
+export default function UseContext(){
 
-    const [state,setState] = useState(true)
+    const theme = useContext(ToggleTheme)
 
     const themeStyle = {
-        backgroundColor : state ? "black" : "grey",
-        color : state ? "grey" : "black",
+        backgroundColor : theme ? "black" : "grey",
+        color : theme ? "grey" : "black",
         padding :'2rem',
         margin : '2rem'
-    }
-
-    function handleClick(){
-        setState(!state)
-        console.log(state)
     }
     
     return(
         <>
-            <button onClick={handleClick}>Toggle for useState</button>
-            <div style={themeStyle}>This is made by using useState</div>
+            <div style={themeStyle}>This is made by using useContext</div>
         </>
     )
 }
